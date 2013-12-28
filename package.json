@@ -1,0 +1,29 @@
+{
+  "name": "mongate",
+  "version": "0.0.0",
+  "description": "mongate is inspired by need of having a high level apis to communicate to monogdb-native apis. This removes all the complexity and clutters to access mongodb natively.",
+  "homepage": "gyansource.com",
+  "bugs": "https://github.com/varuntaak/mongate/issues",
+  "author": {
+    "name": "Varun Tak",
+    "email": "varuntaak@gmail.com",
+    "url": "gyansource.com"
+  },
+  "dependencies": {
+    "mongodb" : "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varuntaak/mongate"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0"
+  }
+}
