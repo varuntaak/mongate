@@ -49,10 +49,11 @@ Contribution is needed from the community as and when mongate need to evolve.
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-
 ## Release History
 
-28-12-2013  v0.0.1
+31-12-2013  v0.1.0-beta released
+
+28-12-2013  mongate repository created
 
 
 ## License
