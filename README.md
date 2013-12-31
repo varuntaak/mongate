@@ -33,11 +33,14 @@ _id is mongodb document id in String format.
 ## Getting Started
 Install the module with: `npm install mongate`
 
+set your application specific settings in models/ApplicationConstants.js, such as dbName, application root/domain ...
+
+and thats it, and mongate will do rest of the things such as setting up a connection, getting db client for mongodb, iterating over the items and much more, for details look at lib/mongate.js and test/mongate_test.js
+
 ```javascript
 var mongate = require('mongate');
 mongate.readDocumentById(_id, callback)
 ```
-
 
 ## Contributing
 Mongate is an effort to come up with simple, intiutive and complete apis to build a web application's database layer.
