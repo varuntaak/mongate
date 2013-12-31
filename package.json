@@ -1,6 +1,6 @@
 {
   "name": "mongate",
-  "version": "0.0.1",
+  "version": "0.1.0-beta",
   "description": "mongate is inspired by need of having a high level apis to communicate to monogdb-native apis. This removes all the complexity and clutters to access mongodb natively.",
   "homepage": "gyansource.com",
   "bugs": "https://github.com/varuntaak/mongate/issues",
