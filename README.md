@@ -1,6 +1,8 @@
 # mongate [![Build Status](https://secure.travis-ci.org/varuntaak/mongate.png?branch=master)](http://travis-ci.org/varuntaak/mongate)
 
-mongate is inspired by need of having a high level apis to communicate to node-mongodb-native apis. This removes all the complexity and clutters to access mongodb natively.
+Kick start your nodejs app with mongate.
+
+mongate is inspired by need of having high level apis to communicate to node-mongodb-native apis. This removes all the complexity and clutters to access mongodb natively.
 
 
 ## Documentation
