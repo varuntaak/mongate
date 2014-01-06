@@ -2,7 +2,7 @@
 
 Kick start your nodejs app with mongodb via mongate.
 
-mongate is inspired by need of having high level apis to communicate to node-mongodb-native apis. This removes all the complexity and clutters to access mongodb natively.
+mongate is inspired by need of having high level apis to communicate to node-mongodb-native apis. This removes most of the complexity and clutters to access mongodb natively.
 
 
 ## Documentation
