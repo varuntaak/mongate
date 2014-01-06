@@ -1,6 +1,6 @@
 # mongate [![Build Status](https://secure.travis-ci.org/varuntaak/mongate.png?branch=master)](http://travis-ci.org/varuntaak/mongate)
 
-Kick start your nodejs app with mongate.
+Kick start your nodejs app with mongodb via mongate.
 
 mongate is inspired by need of having high level apis to communicate to node-mongodb-native apis. This removes all the complexity and clutters to access mongodb natively.
 
@@ -47,7 +47,7 @@ mongate.readDocumentById(_id, callback)
 ## Contributing
 Mongate is an effort to come up with simple, intiutive and complete apis to build a web application's database layer.
 
-Contribution is needed from the community as and when mongate need to evolve.
+Contribution is needed from the community as and when mongate needs to evolve.
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
