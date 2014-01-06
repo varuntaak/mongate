@@ -7,9 +7,9 @@ mongate is inspired by need of having high level apis to communicate to node-mon
 
 ## Documentation
 
-While working on http://gyansource.com (an approach to infuse social networking in marketing and sales.), I realize that there is apparent need of wrapper on node-mongodb-native https://github.com/mongodb/node-mongodb-native library to enhace the reusability in the application.
+While working on [Gyansource](http://gyansource.com) (an approach to infuse social networking in marketing and sales.), I realize that there is apparent need of wrapper on [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) library to enhace the reusability in the application.
 
-http://gyansource.com need to retrieve and persist docuemnts, images, users, user comments etc in mongodb. Mongate is designed in a way which hides the interaction step with node-mongodb-native lib, and provides a clear interface from the user point of view.
+[Gyansource](http://gyansource.com) retrieves and persist docuemnts, images, user records, user comments etc in mongodb. Mongate is designed to hide the low level interaction step with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) lib, and provides a clear, intutive interface from user point of view.
 
 
 ## Examples
