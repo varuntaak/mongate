@@ -97,9 +97,8 @@ describe('mongate', function(){
 
 
       mongate.createDocument(dbRequestToCreateDocument, function (err, actualCreatedDocument) {
-        
-        assert.notEqual(actualCreatedDocument, undefined);
-        assert.notEqual(actualCreatedDocument._id, undefined);
+        assert(!err,err);
+        assert(actualCreatedDocument, "created document should not be undefined");
         assert.equal(documentToCreate.firstName, actualCreatedDocument.firstName);
         
         dbRequestToReadUser = new DBRequest({
@@ -204,6 +203,25 @@ describe('mongate', function(){
         assert(ApplicationConstants.numberOfRecordsPerPage >= documentList.length, 'document list length is more then the page size.');
         done();
       })
+    })
+    it('should read documents by page and apply the given query', function (done){
+      var dbQuery = new DBQuery({
+        'attributeName' : 'firstName',
+        'attributeValue' : "reema"
+      });
+      var dbRequestToReadPageWithQuery = new DBRequest({
+        'page'  : 1,
+        'numberOfRecordsPerPage' : ApplicationConstants.numberOfRecordsPerPage,
+        'collectionName' : Collections.users,
+        'dbQuery' : dbQuery
+      });
+      mongate.readDocumentsByPage(dbRequestToReadPageWithQuery, function (err, users) {
+        assert(!err, err);
+        assert(users, "there should be some posts with state as NEW");
+        console.log(users.length);
+        done();
+      })
+      
     })
   })
 
