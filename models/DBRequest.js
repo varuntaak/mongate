@@ -23,5 +23,9 @@ var DBRequest = function  (dbRequest) {
 		this.imgMeta = dbRequest.imgMeta;
 	if (dbRequest.img_id)
 		this.img_id = dbRequest.img_id
+	if (dbRequest.email)
+		this.email = dbRequest.email;
+	if (dbRequest.incrementValue)
+		this.incrementValue = dbRequest.incrementValue;
 };
 module.exports = DBRequest;

@@ -615,6 +615,58 @@ describe('mongate', function(){
       })  
     })
   })
+
+  describe('incrementFieldValue()', function () {
+    var dbRequestToIncrementCredibilityIndex;
+    var documentToCreate
+    before(function (done) {
+
+      documentToCreate = new User({
+        "firstName" : "reema",
+        "email" : "reema@gyansource.com"
+      });
+      var dbRequestToCreateDocument = new DBRequest({
+        'collectionName' : Collections.users,
+        'document'  : documentToCreate
+      });
+
+
+      mongate.createDocument(dbRequestToCreateDocument, function (err, actualCreatedDocument) {
+        assert(!err,err);
+        assert(actualCreatedDocument, "created document should not be undefined");
+        assert.equal(documentToCreate.firstName, actualCreatedDocument.firstName);
+        dbRequestToIncrementCredibilityIndex = new DBRequest({
+          'collectionName' : Collections.users,
+          '_id' : actualCreatedDocument._id,
+          'incrementValue' : {'credibility_index' : 1}
+        });
+        done()
+      });
+    });
+
+    it('should increment a field value in a collections document', function (done) {
+      mongate.incrementFieldValue(dbRequestToIncrementCredibilityIndex, function (err, status) {
+        assert(!err, err);
+        assert(status);
+        done();
+      })
+    })
+
+    it('should increment a field value in a collections document multiple time if called multiple times', function (done) {
+      mongate.incrementFieldValue(dbRequestToIncrementCredibilityIndex, function (err, status) {
+        assert(!err, err);
+        assert(status);
+        mongate.incrementFieldValue(dbRequestToIncrementCredibilityIndex, function (err, status) {
+          assert(!err, err);
+          assert(status);
+          done();
+        });
+      })
+    })
+
+  })
+  
+
   
   describe('writeImage()', function () {
     var imgData;
@@ -723,6 +775,6 @@ describe('mongate', function(){
     })
     
   })
-  
+
 })
 
