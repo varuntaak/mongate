@@ -485,6 +485,62 @@ describe('mongate', function(){
 
   })
 
+  describe('removeArrayEntryOfDocumentById', function () {
+    var post_id;
+    before(function (done) {
+      var documentToCreate = new Post({
+        "heading" : "its a test post from unit test",
+        "preViewAbleContent" : "hello every one how are you doing",
+        "postDescriptionContent" : "nothing much to say"
+      });
+      var dbRequestToCreateDocument = new DBRequest({
+        'collectionName' : Collections.posts,
+        'document'  : documentToCreate
+      });
+      mongate.createDocument(dbRequestToCreateDocument, function (err, actualCreatedDocument) {
+        assert(!err, err);
+        assert(actualCreatedDocument, 'created document must not be undefined');
+        post_id = actualCreatedDocument._id;
+        var updateValue = {"approvals" : 'abcuserid'};
+        var dbRequestToUpdateApprovalList = new DBRequest({
+              'collectionName' : Collections.posts,
+              '_id' : actualCreatedDocument._id,
+              'updateValue' : updateValue
+        });
+        mongate.updateArrayEntryOfDocumentById(dbRequestToUpdateApprovalList, function (err, result) {
+          assert(!err, err);
+          assert(result, 'result must be defined');
+          done();
+        });
+      });
+    });
+    it('should remove an entry from documents array field', function (done) {
+      var updateValue = {
+        'approvals' : 'abcuserid'
+      }
+      var dbRequestToRemoveArrayEntry = new DBRequest({
+        'collectionName' : Collections.posts,
+        '_id' : post_id,
+        'updateValue' : updateValue
+      });
+      mongate.removeArrayEntryOfDocumentById(dbRequestToRemoveArrayEntry, function(err, result) {
+        assert(!err, err);
+        assert(result, 'result must be defined');
+        var dbRequestToReadPost = new DBRequest({
+          'collectionName' : Collections.posts,
+          '_id' : post_id
+        })
+        mongate.readDocumentById(dbRequestToReadPost, function(err, post) {
+          assert(!err, err);
+          assert(post, 'post must be defined.');
+          assert(post.approvals, 'post must have approval list');
+          assert(post.approvals.length === 0 , 'posts approval list must be empty');
+          done();
+        })
+      })
+    })
+  })
+
   describe('removeDocumentById()', function () {
     var _id
     before(function (done) {
