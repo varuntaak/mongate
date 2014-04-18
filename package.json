@@ -1,6 +1,6 @@
 {
   "name": "mongate",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Kick start your nodejs app with mongate - it is inspired by need of having a high level apis to communicate to monogdb-native apis. This removes all the complexity and clutters to access mongodb natively.",
   "homepage": "gyansource.com",
   "bugs": "https://github.com/varuntaak/mongate/issues",

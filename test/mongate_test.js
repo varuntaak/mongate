@@ -829,7 +829,50 @@ describe('mongate', function(){
         done();
       })
     })
-    
+  })
+  
+  describe('removeImageById()', function(){
+    var imgData;
+    var dbRequestToUploadImage;
+    var imgPath = ApplicationConstants.serverRoot + '/resources/Desert.jpg';
+    before(function (done) {
+      fs.readFile(imgPath, function (err, data) {
+        assert(!err, err);
+        assert(data, 'there must be a valid image at /test/resources/Desert.jpg');
+        imgData = data;
+        done();
+      }) 
+    });
+
+    it('should remove image provided a valid _id', function (done) {
+      dbRequestToUploadImage = new DBRequest({
+        img : imgData,
+        imgMeta : new ImageMeta({
+                type : 'preview',
+                caption : 'caption to be here..'
+              }) 
+      });
+      mongate.writeImage(dbRequestToUploadImage, function (err, img_id) {
+        assert(!err, err);
+        assert(img_id, 'img_id must be defined');
+        var dbRequestToRmoveImage = new DBRequest({
+          img_id : img_id
+        });
+        mongate.removeImageById(dbRequestToRmoveImage, function (err, status) {
+          assert(!err, err);
+          console.log(img_id);
+          assert(status, 'status must be true');
+          var dbRequestToReadImage = new DBRequest({
+            img_id : img_id
+          });
+          mongate.readImage(dbRequestToReadImage, function (err, img_data) {
+            assert(err, "there should be an error,");
+            assert(!img_data, 'image data must be undefined');
+            done();
+          })
+        })
+      })
+    })
   })
 
 })
