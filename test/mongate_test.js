@@ -218,7 +218,6 @@ describe('mongate', function(){
       mongate.readDocumentsByPage(dbRequestToReadPageWithQuery, function (err, users) {
         assert(!err, err);
         assert(users, "there should be some posts with state as NEW");
-        console.log(users.length);
         done();
       })
       
@@ -860,7 +859,6 @@ describe('mongate', function(){
         });
         mongate.removeImageById(dbRequestToRmoveImage, function (err, status) {
           assert(!err, err);
-          console.log(img_id);
           assert(status, 'status must be true');
           var dbRequestToReadImage = new DBRequest({
             img_id : img_id
