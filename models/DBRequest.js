@@ -27,5 +27,7 @@ var DBRequest = function  (dbRequest) {
 		this.email = dbRequest.email;
 	if (dbRequest.incrementValue)
 		this.incrementValue = dbRequest.incrementValue;
+	if (dbRequest.field)
+		this.field = dbRequest.field;
 };
 module.exports = DBRequest;

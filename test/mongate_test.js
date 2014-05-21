@@ -873,5 +873,22 @@ describe('mongate', function(){
     })
   })
 
+  describe('getDistinctValues()', function () {
+    it('should get distinct values for a field', function (done) {
+      var dbRequestToGetDistinctValues = new DBRequest({
+        'collectionName' : 'users',
+        'field' : 'credibility_index',
+        'query' : '{ price: { $gt: 10 } }'
+      })
+      mongate.getDistinctValues(dbRequestToGetDistinctValues, function (err, values) {
+        assert(!err, err);
+        assert(values, 'values must be defined');
+        console.log(values);
+        assert(Array.isArray(values), 'values should be an array');
+        done();
+      })
+    })
+  })
+
 })
 
