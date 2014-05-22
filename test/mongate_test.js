@@ -878,7 +878,7 @@ describe('mongate', function(){
       var dbRequestToGetDistinctValues = new DBRequest({
         'collectionName' : 'users',
         'field' : 'credibility_index',
-        'query' : '{ price: { $gt: 10 } }'
+        'query' : '{ credibility_index: { $gt: 10 } }'
       })
       mongate.getDistinctValues(dbRequestToGetDistinctValues, function (err, values) {
         assert(!err, err);
