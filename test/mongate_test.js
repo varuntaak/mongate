@@ -873,18 +873,31 @@ describe('mongate', function(){
     })
   })
 
-  describe('getDistinctValues()', function () {
-    it('should get distinct values for a field', function (done) {
+  describe('getDistinctSortedValues()', function () {
+    it('should get distinct values for a field in ascending order', function (done) {
+      var dbRequestToGetDistinctValues = new DBRequest({
+        'collectionName' : 'users',
+        'field' : 'credibility_index'   
+      })
+      mongate.getDistinctSortedValues(dbRequestToGetDistinctValues, function (err, values) {
+        assert(!err, err);
+        assert(values, 'values must be defined');
+        assert(Array.isArray(values), 'values should be an array');
+        assert(values[1] > values[0], 'result must be in descending order');
+        done();
+      })
+    })
+    it('should get distinct values for a field in descending order', function (done) {
       var dbRequestToGetDistinctValues = new DBRequest({
         'collectionName' : 'users',
         'field' : 'credibility_index',
-        'query' : '{ credibility_index: { $gt: 10 } }'
+        'sort' : 'desc'
       })
-      mongate.getDistinctValues(dbRequestToGetDistinctValues, function (err, values) {
+      mongate.getDistinctSortedValues(dbRequestToGetDistinctValues, function (err, values) {
         assert(!err, err);
         assert(values, 'values must be defined');
-        console.log(values);
         assert(Array.isArray(values), 'values should be an array');
+        assert(values[1] < values[0], 'result must be in descending order');
         done();
       })
     })

@@ -15,6 +15,8 @@ var DBRequest = function  (dbRequest) {
 		else
 			throw new Error('dbQuery is not a valid query, as its attribute values are not defined.')
 	}
+	if (dbRequest.dbQueryWithOR)
+		this.dbQueryWithOR = dbRequest.dbQueryWithOR;
 	if (dbRequest.updateValue)
 		this.updateValue = dbRequest.updateValue;
 	if (dbRequest.img)
@@ -29,5 +31,7 @@ var DBRequest = function  (dbRequest) {
 		this.incrementValue = dbRequest.incrementValue;
 	if (dbRequest.field)
 		this.field = dbRequest.field;
+	if (dbRequest.sort)
+		this.sort = dbRequest.sort;
 };
 module.exports = DBRequest;
