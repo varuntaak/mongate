@@ -53,12 +53,14 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-04-04-2014  v0.1.4 released
+25-05-2014  v0.1.6 release
+	-added api to get distinct sorted values.
 
-31-12-2013  v0.1.0-beta released
+04-04-2014  v0.1.4 release
+
+31-12-2013  v0.1.0-beta release
 
 28-12-2013  mongate repository created
-
 
 ## License
 Copyright (c) 2013 Varun Tak. Licensed under the MIT license.
