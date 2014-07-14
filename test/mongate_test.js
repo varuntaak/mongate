@@ -903,5 +903,65 @@ describe('mongate', function(){
     })
   })
 
+  describe('doTransaction()', function () {
+    var test_post_A;
+    var test_post_B;
+    before(function (done) {
+      var post_A = new Post({
+        "heading" : "txn test post A",
+        "preViewAbleContent" : "hello every one how are you doing",
+        "postDescriptionContent" : "nothing much to say"
+      });
+      var dbRequest_A = new DBRequest({
+        'collectionName' : Collections.posts,
+        'document'  : post_A
+      });
+      mongate.createDocument(dbRequest_A, function (err, actualCreatedDocument) {
+        test_post_A = actualCreatedDocument;
+        assert.notEqual(actualCreatedDocument, undefined);
+        assert.notEqual(actualCreatedDocument._id, undefined);
+        assert.equal(post_A.firstName, actualCreatedDocument.firstName);
+        var post_B = new Post({
+          "heading" : "txn test post B",
+          "preViewAbleContent" : "hello every one how are you doing",
+          "postDescriptionContent" : "nothing much to say"
+        });
+        var dbRequest_B = new DBRequest({
+          'collectionName' : Collections.posts,
+          'document'  : post_B
+        });
+        mongate.createDocument(dbRequest_B, function (err, actualCreatedDocument) {
+          test_post_B = actualCreatedDocument;
+          assert.notEqual(actualCreatedDocument, undefined);
+          assert.notEqual(actualCreatedDocument._id, undefined);
+          assert.equal(post_B.firstName, actualCreatedDocument.firstName);
+          done();
+        });
+      });     
+    })
+
+    it('should initiate and complete a transaction provided a transaction', function (done) {
+      var jobs = [{'todo' : 'update', 
+                          'resource_id' : test_post_A._id, 
+                          'update_value' : {'preViewAbleContent' : 'updated...in transaction'}, 
+                          'collection' : Collections.posts},
+                  {'todo' : 'update', 
+                          'resource_id' : test_post_B._id, 
+                          'update_value' : {'preViewAbleContent' : 'updated...in transaction'}, 
+                          'collection' : 'Users'}
+                  ];
+      var transaction = {
+        'name' : 'Accepting Order',
+        'jobs' : jobs
+      };
+      mongate.doTransaction(transaction, function (err, status) {
+        console.log(status);
+        assert(!err, err);
+        assert(status, 'status must be true');
+        done();
+      })
+    })
+  })
+
 })
 
