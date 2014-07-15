@@ -943,12 +943,12 @@ describe('mongate', function(){
     it('should initiate and complete a transaction provided a transaction', function (done) {
       var jobs = [{'todo' : 'update', 
                           'resource_id' : test_post_A._id, 
-                          'update_value' : {'preViewAbleContent' : 'updated...in transaction'}, 
+                          'value' : {'preViewAbleContent' : 'updated...in transaction'}, 
                           'collection' : Collections.posts},
                   {'todo' : 'update', 
                           'resource_id' : test_post_B._id, 
-                          'update_value' : {'preViewAbleContent' : 'updated...in transaction'}, 
-                          'collection' : 'Users'}
+                          'value' : {'preViewAbleContent' : 'updated...in transaction'}, 
+                          'collection' : Collections.posts}
                   ];
       var transaction = {
         'name' : 'Accepting Order',
