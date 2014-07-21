@@ -955,7 +955,6 @@ describe('mongate', function(){
         'jobs' : jobs
       };
       mongate.doTransaction(transaction, function (err, status) {
-        console.log(status);
         assert(!err, err);
         assert(status, 'status must be true');
         done();
