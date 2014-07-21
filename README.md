@@ -53,6 +53,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+21-07-2014 v0.1.7 release
+	-bug fix for get distinct value to avoid nulls in return set.
+	-added doTransaction to do multiple db operations by creating a transaction (this is not yet a 2 phase commit but a start of concept, needs more work and will be part of coming releases.)
+
 25-05-2014  v0.1.6 release
 	-added api to get distinct sorted values.
 
