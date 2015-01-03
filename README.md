@@ -2,7 +2,7 @@
 
 Kick start your nodejs app with mongodb via mongate.
 
-mongate is inspired by need of having high level apis to communicate to node-mongodb-native apis. This removes most of the complexity and clutters to access mongodb natively.
+mongate is inspired by need of having high level interface to node-mongodb-native apis. This removes most of the complexity and clutters to access mongodb natively.
 
 
 ## Documentation
@@ -26,11 +26,9 @@ document is a JSON, and a callback to know the status.
 To read a document from database
 
 ```javascript
-mongate.readDocumentById(_id, callback);
+mongate.readDocumentById(dbRequest, callback);
 ```
-_id is mongodb document id in String format.
-
-... for more detail look into test/mongate_test.js
+dbRequest is special command like object, which keeps atleast details of CollectionName and _id. For more information look in to structures of DbRequest class as well as test/mongate_test.js
 
 ## Getting Started
 Install the module with: `npm install mongate`
@@ -53,16 +51,19 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-21-07-2014 v0.1.7 release
+03-01-2015 v0.1.8
+	-updated README.md
+
+21-07-2014 v0.1.7
 	-bug fix for get distinct value to avoid nulls in return set.
 	-added doTransaction to do multiple db operations by creating a transaction (this is not yet a 2 phase commit but a start of concept, needs more work and will be part of coming releases.)
 
-25-05-2014  v0.1.6 release
+25-05-2014  v0.1.6
 	-added api to get distinct sorted values.
 
-04-04-2014  v0.1.4 release
+04-04-2014  v0.1.4
 
-31-12-2013  v0.1.0-beta release
+31-12-2013  v0.1.0
 
 28-12-2013  mongate repository created
 
