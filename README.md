@@ -7,9 +7,9 @@ mongate is inspired by need of having high level interface to node-mongodb-nativ
 
 ## Documentation
 
-While working on [Gyansource](http://gyansource.com) (an approach to infuse social networking in marketing and sales.), I realize that there is apparent need of wrapper on [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) library to enhace the reusability in the application.
+While working on [Gyansource](http://gyansource.com) (an approach to infuse social networking in marketing and sales.), I realize that there is apparent need of wrapper on [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) library to enhace reusability in the application.
 
-[Gyansource](http://gyansource.com) retrieves and persist docuemnts, images, user records, user comments etc in mongodb. Mongate is designed to hide the low level interaction step with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) lib, and provides a clear, intutive interface from user point of view.
+[Gyansource](http://gyansource.com) retrieves and persist docuemnts, images, user records, user comments etc in mongodb. Mongate is designed to hide low level interaction step with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) lib, and provides a clear, intutive interface from user point of view.
 
 
 ## Examples
